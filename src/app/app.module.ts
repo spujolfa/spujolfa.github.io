@@ -19,4 +19,3 @@ import { environment } from 'src/environments/environment';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-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 
