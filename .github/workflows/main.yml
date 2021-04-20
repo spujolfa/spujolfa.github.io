@@ -32,7 +32,7 @@ jobs:
           # A personal access token needed to push your site after it has been built.
           access-token: ${{ secrets.ACCESS_TOKEN }} 
           # The branch expected by GitHub to have the static files needed for your site.
-          deploy-branch: production# optional, default is master
+          deploy-branch: production # optional, default is master
           # Additional arguments that get passed to `npm run build`.
           #build-args: # optional, default is 
           # Additional arguments that get passed to `npm run scully`.
