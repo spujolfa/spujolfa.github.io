@@ -1,0 +1,8 @@
+  .example-header-image {
+    background-image: url(src/img/foto.png);
+    background-size: cover;
+  }
+  .mat-card-avatar{
+      height: 60px;
+      width: 60px;
+  }
