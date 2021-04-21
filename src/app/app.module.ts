@@ -5,15 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-
+import { HeaderComponent } from './header/header.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule} from '@angular/material/list';
+import { MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    NoopAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
