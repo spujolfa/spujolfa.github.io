@@ -11,10 +11,10 @@ export class FirebaseauthService {
 
   constructor(private auth: AngularFireAuth) { }
 
-  login(){
+  login(): Promise<firebase.auth.UserCredential>{
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({prompt: 'select_account'});
-    this.auth.signInWithPopup(provider);
+    return this.auth.signInWithPopup(provider);
   }
 
   logout(): Promise<void>{
@@ -22,6 +22,6 @@ export class FirebaseauthService {
   }
 
   get user(): Observable<firebase.User>{
-    return null;
+    return this.auth.user;
   }
 }

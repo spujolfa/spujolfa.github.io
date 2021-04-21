@@ -14,11 +14,15 @@ import { MatListModule} from '@angular/material/list';
 import { MatButtonModule} from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { WorkComponent } from './pages/work/work.component';
+import { ManageworkComponent } from './pages/managework/managework.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    WorkComponent,
+    ManageworkComponent
   ],
   imports: [
     BrowserModule,

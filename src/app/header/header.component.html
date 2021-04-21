@@ -9,10 +9,11 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav>
       <mat-nav-list style="min-width: 200px;">
-        <a mat-list-item> Login </a>
-        <a mat-list-item> Portfolio </a>
-        <a mat-list-item> Treballs </a>
-        <a mat-list-item> Private </a>
+        <a mat-list-item *ngIf="user == null" (click)="login()"> Login </a>
+        <a mat-list-item *ngIf="user != null" (click)="logout()"> Logout </a>
+        <a mat-list-item [routerLink]="['/home']"> Portfolio </a>
+        <a mat-list-item [routerLink]="['/work']"> Treballs </a>
+        <a mat-list-item [routerLink]="['/managework']" *ngIf="user != null"> Private </a>
         <a mat-list-item (click)="sidenav.toggle()" mat-list-item>Tanca</a>
   
       </mat-nav-list>

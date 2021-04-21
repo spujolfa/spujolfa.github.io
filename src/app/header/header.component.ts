@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseauthService } from '../services/firebaseauth.service';
+import firebase from 'firebase/app';
+import { FirebasedbService } from '../services/firebasedb.service';
+import { take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public user: firebase.User;
+  public loginError: boolean = false;
+  public allowedUserError: boolean = false;
+
+  constructor(
+    private fireauth: FirebaseauthService, 
+    private firestore: FirebasedbService
+    ) { }
 
   ngOnInit(): void {
+    this.fireauth.user.subscribe(
+      (originalUser: firebase.User) => {
+        this.user = originalUser;
+      }
+    )
+  }
+
+  login(){
+    this.fireauth.login().then(
+      (user: firebase.auth.UserCredential) => {
+        this.firestore.checkAllowedUser(user.user.email).pipe(take(1)).subscribe(
+          (originalEmails: any[]) => {
+            if (originalEmails.length != 1){
+              alert("Usuari no permès");
+              this.logout();
+            }
+          }
+        )
+      }
+    )
+  }
+
+  logout(){
+    this.user = null;
   }
 
 }
