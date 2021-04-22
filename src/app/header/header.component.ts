@@ -3,6 +3,7 @@ import { FirebaseauthService } from '../services/firebaseauth.service';
 import firebase from 'firebase/app';
 import { FirebasedbService } from '../services/firebasedb.service';
 import { take} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private fireauth: FirebaseauthService, 
-    private firestore: FirebasedbService
+    private firestore: FirebasedbService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.user = null;
+    this.router.navigate(["/home"]);
   }
 
 }

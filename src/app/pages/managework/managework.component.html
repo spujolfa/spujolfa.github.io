@@ -1,1 +1,41 @@
-<p>managework works!</p>
+<div class="container text-center">
+    <div class="row">
+        <div *ngFor="let work of works; let i=index" class="col-4  text-center">
+            <mat-card class="m-2">
+                <mat-card-header>
+                    <mat-card-title><h1  class="text-center">{{work.name}}</h1></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <h3>{{work.desc}}</h3>
+                    <h3>{{work?.date?.toDate() | date: 'yyyy-MM-dd'}}</h3>
+                    <button mat-fab color="primary"><mat-icon (click)="deleteWork(i)">delete</mat-icon></button>
+                    <button mat-fab color="primary"><mat-icon (click)="loadCurrentWork(i)">edit</mat-icon></button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<button mat-fab color="primary" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addWorkModel" (click)="clearWork()"><mat-icon>add</mat-icon></button>
+
+<div class="modal" id="addWorkModel" tabindex="-1" aria-labelledby="addWorkModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addWorkModelLabel">Afegir un nou Treball a la Base de Dades</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Tancar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Nom del Treball" aria-label="Nom del Treball" aria-describedby="basic-addon1" [(ngModel)]="work.name">
+                <input type="text" class="form-control" placeholder="Descripció del Treball" aria-label="Descripció del Treball" aria-describedby="basic-addon1" [(ngModel)]="work.desc">
+                <input type="date" [(ngModel)]="work.date">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tancar</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='add'" (click)="addWork()" data-dismiss="modal">Afegir</button>
+                <button type="button" class="btn btn-primary" *ngIf="mode=='update'" (click)="updateWork()" data-dismiss="modal">Modificar</button>
+            </div>
+        </div>
+    </div>
+</div>

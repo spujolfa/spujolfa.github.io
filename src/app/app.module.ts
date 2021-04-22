@@ -16,6 +16,7 @@ import { MatCardModule} from '@angular/material/card';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { WorkComponent } from './pages/work/work.component';
 import { ManageworkComponent } from './pages/managework/managework.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ManageworkComponent } from './pages/managework/managework.component';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
