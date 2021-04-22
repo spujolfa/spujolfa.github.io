@@ -8,7 +8,6 @@ import { FirebasedbService } from 'src/app/services/firebasedb.service';
   styleUrls: ['./work.component.css']
 })
 export class WorkComponent{
-
   public works: Work[] = [];
   
   constructor(private firedb: FirebasedbService) { 
